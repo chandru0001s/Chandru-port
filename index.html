@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Chandru V</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            scroll-behavior: smooth;
+            background: url('Background Portfolio.avif') no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            background: url('backgrounds-portfolio.jpg') no-repeat center center fixed; /* Change this to your header background image */
+            background-size: cover;
+            color: #fff;
+            padding: 60px 0; /* Increased padding */
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            position: relative;
+            animation: fadeIn 2s ease-out;
+        }
+        header img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: zoomIn 2s ease-out;
+            z-index: 10; /* Ensure header image is above hero section */
+        }
+        nav {
+            background: rgba(68, 68, 68, 0.8);
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: #fff;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+            border-radius: 4px;
+        }
+        nav a:hover {
+            background: rgba(85, 85, 85, 0.8);
+            transform: scale(1.1);
+        }
+        .hero {
+            background: rgba(255, 255, 255, 0.85); /* Adjusted transparency */
+            color: #333;
+            text-align: center;
+            padding: 100px 20px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1; /* Ensure it's above the background but behind the header image */
+        }
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out;
+        }
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        .hero a {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .hero a:hover {
+            background: #555;
+            transform: scale(1.1);
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 20px;
+            width: 100%;
+            max-width: 1200px;
+            box-sizing: border-box;
+            animation: fadeIn 2s ease-out;
+        }
+        @media (min-width: 768px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media (min-width: 1024px) {
+            .container {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        .section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            animation: fadeInUp 1s ease-out;
+        }
+        .about-me {
+            background: #fff; /* Set background to white */
+        }
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+            animation: fadeIn 1.5s ease-out;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        li {
+            background: #e7e7e7;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            animation: fadeIn 2s ease-out;
+        }
+        li:hover {
+            background: #d0d0d0;
+            transform: scale(1.02);
+        }
+        .skill-logo {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+        }
+        .project {
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .project img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .project a {
+            display: inline-block;
+            background: #333;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .project a:hover {
+            background: #555;
+            transform: scale(1.1);
+        }
+        .certificates ul, .internships ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .certificates li, .internships li {
+            background: #e7e7e7;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+        .certificates li img, .internships li img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+        .certificates li:hover, .internships li:hover {
+            transform: scale(1.02);
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            width: 100%;
+        }
+        .social-icons {
+            margin-top: 10px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome To My Portfolio</h1>
+        <img src="IMG-20240310-WA0012.jpg" alt="Chandru V">
+        <p>Chandru Venkatesan</p>
+    </header>
+    
+    <nav>
+        <a href="#about-me">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#internships">Internships</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section class="hero">
+        <h1>Chandru V - Web Developer & Frontend</h1>
+        <p>Hi, I'm Chandru, a dedicated web developer and Frontend from Coimbatore, India. I specialize in creating visually appealing and user-friendly websites. My expertise spans HTML, CSS, JavaScript, C++, Java, and React.js. I am passionate about bringing ideas to life through code and design.</p>
+        <a href="#contact">Contact Me</a>
+    </section>
+
+    <div class="container">
+        <section id="about-me" class="section about-me">
+            <h2>About Me</h2>
+            <p>I am Chandru, a passionate web developer and Frontend based in Coimbatore, India. With a strong foundation in HTML, CSS, and JavaScript, I create responsive and user-friendly websites. I am also experienced in C++, Java, and React.js.</p>
+        </section>
+
+        <section id="skills" class="section skills">
+            <h2>Skills</h2>
+            <ul>
+                <li><img src="HTML.png" alt="HTML5" class="skill-logo">HTML5</li>
+                <li><img src="CSS.png" alt="CSS3" class="skill-logo">CSS3</li>
+                <li><img src="Java.png" alt="JavaScript" class="skill-logo">JavaScript</li>
+                <li><img src="c++.png" alt="C++" class="skill-logo">C++</li>
+                <li><img src="ReactJS.jpeg" alt="React.js" class="skill-logo">React.js</li>
+            </ul>
+        </section>
+
+        <section id="projects" class="section projects">
+            <h2>Projects</h2>
+
+            <div class="project">
+                <h3>Virtual Animal</h3>
+                <p>A project that allows users to adopt virtual pets, providing a fun and engaging way to learn about animal care.</p>
+                <p><a href="file:///C:/Users/Admin/OneDrive/Desktop/VIRTUAL%20ANIMAL/adoption.html" target="_blank">View Project</a></p>
+            </div>
+
+            <!-- Add more projects as needed -->
+        </section>
+
+        <section id="certificates" class="section certificates">
+            <h2>Certificates</h2>
+            <ul>
+                <li>
+                    <h3>Matlab Onramp</h3>
+                    <img src="MatLab.png" alt="Certificate 1">
+                </li>
+                <li>
+                    <h3>Codsoft</h3>
+                    <img src="Codsoft.png" alt="Certificate 2">
+                </li>
+                <!-- Add more certificates as needed -->
+            </ul>
+        </section>
+
+        <section id="internships" class="section internships">
+            <h2>Internships</h2>
+            <ul>
+                <li>
+                    <h3>Krish Tec Company Internship</h3>
+                    <p>Worked on developing embedded systems applications, gaining hands-on experience with hardware-software integration, real-time operating systems, and system optimization.</p>
+                    <img src="Internship krish tec.png" alt="Internship Certificate">
+                </li>
+                <!-- Add more internships as needed -->
+            </ul>
+        </section>
+
+        <section id="contact" class="section contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:chandruv089@gmail.com">chandruv089@gmail.com</a></p>
+            <p>Phone: <a href="tel:+917305951073">+91-7305951073</a></p>
+            <p>Address: Coimbatore, India</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Chandru V. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/chandru-venkatesan-976848258/" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+            </a>
+            <a href="https://github.com/chandru0001s" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733609.png" alt="GitHub">
+            </a>
+            <a href="https://www.instagram.com/_.chandru._73?igsh=MXZrYXJ2MjFhOTMyeA==" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
